@@ -170,7 +170,7 @@ endif
 ########### HAL_RTL8821C #################################
 EXTRA_CFLAGS += -DCONFIG_RTL8821C
 
-MODULE_NAME = 8821cu
+MODULE_NAME = rtl8821cu
 
 ifeq ($(CONFIG_PLATFORM_NV_TK1), n)
 ifeq ($(CONFIG_PLATFORM_RTK129X), n)
