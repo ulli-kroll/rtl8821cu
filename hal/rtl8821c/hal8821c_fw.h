@@ -23,7 +23,6 @@
 #ifndef _FW_HEADER_8821C_H
 #define _FW_HEADER_8821C_H
 
-#ifdef LOAD_FW_HEADER_FROM_DRIVER
 #if (defined(CONFIG_AP_WOWLAN) || (DM_ODM_SUPPORT_TYPE & (ODM_AP)))
 extern u8 array_mp_8821c_fw_ap[89048];
 extern u32 array_length_mp_8821c_fw_ap;
@@ -35,7 +34,6 @@ extern u32 array_length_mp_8821c_fw_nic;
 extern u8 array_mp_8821c_fw_wowlan[92896];
 extern u32 array_length_mp_8821c_fw_wowlan;
 #endif
-#endif /* end of LOAD_FW_HEADER_FROM_DRIVER */
 
 #endif
 
