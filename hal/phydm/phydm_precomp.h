@@ -363,7 +363,6 @@ phy_set_tx_power_limit(
 	#include "rtl8821c/halhwimg8821c_mac.h"
 	#include "rtl8821c/halhwimg8821c_rf.h"
 	#include "rtl8821c/halhwimg8821c_bb.h"
-	#include "rtl8821c/halhwimg8821c_fw.h"
 	#include "rtl8821c/phydm_regconfig8821c.h"
 	#include "rtl8821c/halphyrf_8821c.h"
 	#include "rtl8821c/version_rtl8821c.h"
