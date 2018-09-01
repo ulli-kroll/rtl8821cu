@@ -1,4 +1,3 @@
-RTL871X := rtl8821c
 EXTRA_CFLAGS += -DCONFIG_RTL8821C
 
 MODULE_NAME = 8821cu
@@ -39,15 +38,15 @@ _HAL_INTFS_FILES +=	hal/rtl8821c/rtl8821c_halinit.o \
 			hal/rtl8821c/rtl8821c_ops.o \
 			hal/rtl8821c/hal8821c_fw.o
 
-_HAL_INTFS_FILES +=	hal/rtl8821c/usb/rtl$(MODULE_NAME)_halinit.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_halmac.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_io.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_xmit.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_recv.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_led.o \
-			hal/rtl8821c/usb/rtl$(MODULE_NAME)_ops.o
+_HAL_INTFS_FILES +=	hal/rtl8821c/usb/rtl8821cu_halinit.o \
+			hal/rtl8821c/usb/rtl8821cu_halmac.o \
+			hal/rtl8821c/usb/rtl8821cu_io.o \
+			hal/rtl8821c/usb/rtl8821cu_xmit.o \
+			hal/rtl8821c/usb/rtl8821cu_recv.o \
+			hal/rtl8821c/usb/rtl8821cu_led.o \
+			hal/rtl8821c/usb/rtl8821cu_ops.o
 
-_HAL_INTFS_FILES +=hal/efuse/$(RTL871X)/HalEfuseMask8821C_USB.o
+_HAL_INTFS_FILES +=hal/efuse/rtl8821c/HalEfuseMask8821C_USB.o
 
 _OUTSRC_FILES +=	hal/phydm/rtl8821c/halhwimg8821c_bb.o \
 			hal/phydm/rtl8821c/halhwimg8821c_mac.o \
