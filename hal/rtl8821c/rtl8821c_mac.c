@@ -159,22 +159,11 @@ s32 rtl8821c_fw_dl(PADAPTER adapter, u8 wowlan)
 	int err;
 	u8 fw_bin = _TRUE;
 
-#ifdef CONFIG_FILE_FWIMG
-	fw_bin = _TRUE;
-	if (_TRUE == wowlan) {
-		rtw_get_phy_file_path(adapter, MAC_FILE_FW_WW_IMG);
-		err = rtw_halmac_dlfw_from_file(d, rtw_phy_para_file_path);
-	} else {
-		rtw_get_phy_file_path(adapter, MAC_FILE_FW_NIC);
-		err = rtw_halmac_dlfw_from_file(d, rtw_phy_para_file_path);
-	}
-#else
 	fw_bin = _FALSE;
 	if (_TRUE == wowlan)
 		err = rtw_halmac_dlfw(d, array_mp_8821c_fw_wowlan, array_length_mp_8821c_fw_wowlan);
 	else
 		err = rtw_halmac_dlfw(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic);
-#endif
 
 	if (!err) {
 		adapter->bFWReady = _TRUE;
@@ -200,14 +189,8 @@ s32 rtl8821c_fw_mem_dl(PADAPTER adapter, enum fw_mem mem)
 	int err = 0;
 	u8 fw_bin = _TRUE;
 
-#ifdef CONFIG_FILE_FWIMG
-	fw_bin = _TRUE;
-	rtw_get_phy_file_path(adapter, MAC_FILE_FW_NIC);
-	err = rtw_halmac_dlfw_mem_from_file(d, rtw_phy_para_file_path, mem);
-#else
 	fw_bin = _FALSE;
 	err = rtw_halmac_dlfw_mem(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic, mem);
-#endif
 
 	if (err) {
 		RTW_ERR("%s Download Firmware MEM from %s failed\n", __func__, (fw_bin) ? "file" : "array");

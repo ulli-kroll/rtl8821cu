@@ -143,12 +143,7 @@ u8 rtl8821c_hal_init_main(PADAPTER adapter)
 #ifdef CONFIG_NO_FW
 	err = rtw_halmac_init_hal(d);
 #else
-	#ifdef CONFIG_FILE_FWIMG
-	rtw_get_phy_file_path(adapter, MAC_FILE_FW_NIC);
-	err = rtw_halmac_init_hal_fw_file(d, rtw_phy_para_file_path);
-	#else
 	err = rtw_halmac_init_hal_fw(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic);
-	#endif
 
 	if (!err) {
 		adapter->bFWReady = _TRUE;

@@ -79,7 +79,6 @@
 
 #define RTW_HALMAC		/* Use HALMAC architecture, necessary for 8821C */
 #define CONFIG_EMBEDDED_FWIMG
-/* #define CONFIG_FILE_FWIMG */
 
 #define CONFIG_XMIT_ACK
 #ifdef CONFIG_XMIT_ACK
