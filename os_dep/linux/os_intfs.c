@@ -1268,12 +1268,6 @@ static int rtw_ndev_notifier_call(struct notifier_block *nb, unsigned long state
 
 	RTW_INFO(FUNC_NDEV_FMT" state:%lu\n", FUNC_NDEV_ARG(dev), state);
 
-	switch (state) {
-	case NETDEV_CHANGENAME:
-		rtw_adapter_proc_replace(dev);
-		break;
-	}
-
 	return NOTIFY_DONE;
 }
 
@@ -1300,7 +1294,6 @@ int rtw_ndev_init(struct net_device *dev)
 		, FUNC_ADPT_ARG(adapter), (adapter->iface_id + 1), MAC_ARG(dev->dev_addr));
 	strncpy(adapter->old_ifname, dev->name, IFNAMSIZ);
 	adapter->old_ifname[IFNAMSIZ - 1] = '\0';
-	rtw_adapter_proc_init(dev);
 
 	return 0;
 }
@@ -1311,7 +1304,6 @@ void rtw_ndev_uninit(struct net_device *dev)
 
 	RTW_PRINT(FUNC_ADPT_FMT" if%d\n"
 		  , FUNC_ADPT_ARG(adapter), (adapter->iface_id + 1));
-	rtw_adapter_proc_deinit(dev);
 }
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29))
