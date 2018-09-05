@@ -357,9 +357,6 @@ phy_set_tx_power_limit(
 
 #if (RTL8821C_SUPPORT == 1)
 	#include "rtl8821c/phydm_hal_api8821c.h"
-	#include "rtl8821c/halhwimg8821c_testchip_mac.h"
-	#include "rtl8821c/halhwimg8821c_testchip_rf.h"
-	#include "rtl8821c/halhwimg8821c_testchip_bb.h"
 	#include "rtl8821c/halhwimg8821c_mac.h"
 	#include "rtl8821c/halhwimg8821c_rf.h"
 	#include "rtl8821c/halhwimg8821c_bb.h"
