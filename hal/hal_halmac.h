@@ -68,7 +68,7 @@ int rtw_halmac_init_hal_fw(struct dvobj_priv *, u8 *fw, u32 fwsize);
 int rtw_halmac_init_hal_fw_file(struct dvobj_priv *, u8 *fwpath);
 int rtw_halmac_deinit_hal(struct dvobj_priv *);
 int rtw_halmac_self_verify(struct dvobj_priv *);
-int rtw_halmac_dlfw(struct dvobj_priv *, u8 *fw, u32 fwsize);
+int rtw_halmac_dlfw(struct dvobj_priv *);
 int rtw_halmac_dlfw_from_file(struct dvobj_priv *, u8 *fwpath);
 int rtw_halmac_dlfw_mem(struct dvobj_priv *d, u8 *fw, u32 fwsize, enum fw_mem mem);
 int rtw_halmac_dlfw_mem_from_file(struct dvobj_priv *d, u8 *fwpath, enum fw_mem mem);

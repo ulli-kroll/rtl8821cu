@@ -160,7 +160,7 @@ s32 rtl8821c_fw_dl(PADAPTER adapter)
 	u8 fw_bin = _TRUE;
 
 	fw_bin = _FALSE;
-	err = rtw_halmac_dlfw(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic);
+	err = rtw_halmac_dlfw(d);
 
 	if (!err) {
 		adapter->bFWReady = _TRUE;

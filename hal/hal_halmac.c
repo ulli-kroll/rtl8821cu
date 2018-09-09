@@ -23,6 +23,7 @@
 #include <hal_data.h>		/* efuse, PHAL_DATA_TYPE and etc. */
 #include "halmac/halmac_api.h"	/* HALMAC_FW_SIZE_MAX_88XX and etc. */
 #include "hal_halmac.h"		/* dvobj_to_halmac() and ect. */
+#include <linux/firmware.h>
 
 #define DEFAULT_INDICATOR_TIMELMT	1000	/* ms */
 #define FIRMWARE_MAX_SIZE		HALMAC_FW_SIZE_MAX_88XX
@@ -1763,22 +1764,33 @@ int rtw_halmac_dlfw_mem_from_file(struct dvobj_priv *d, u8 *fwpath, enum fw_mem 
  *	0	Success
  *	-22	Invalid arguemnt
  */
-int rtw_halmac_dlfw(struct dvobj_priv *d, u8 *fw, u32 fwsize)
+int rtw_halmac_dlfw(struct dvobj_priv *d)
 {
 	PADAPTER adapter;
 	HALMAC_RET_STATUS status;
 	u32 ok = _TRUE;
 	int err, err_ret = -1;
+	char *fw_name =  "rtlwifi/rtl8822cufw.bin";
+	const struct firmware *fw;
 
+	RTW_INFO("request firmware %s\n",fw_name);
+	if (request_firmware(&fw, fw_name, &d->pusbdev->dev)) {
+		RTW_ERR("Firmware %s not available\n", fw_name);
+		goto out;
+	}
 
-	if (!fw || !fwsize)
+	if (!fw->data || !fw->size)
 		return -22;
 
 	adapter = dvobj_get_primary_adapter(d);
 
 	/* re-download firmware */
-	if (rtw_is_hw_init_completed(adapter))
-		return download_fw(d, fw, fwsize, 1);
+	if (rtw_is_hw_init_completed(adapter)) {
+		err =  download_fw(d, (u8 *) fw->data, fw->size, 1);
+		RTW_INFO("firmware re-downloaded to device %d\n", err);
+		release_firmware(fw);
+		return err;
+	}
 
 	/* Download firmware before hal init */
 	/* Power on, download firmware and init mac */
@@ -1786,7 +1798,9 @@ int rtw_halmac_dlfw(struct dvobj_priv *d, u8 *fw, u32 fwsize)
 	if (_FAIL == ok)
 		goto out;
 
-	err = download_fw(d, fw, fwsize, 0);
+	err = download_fw(d, (u8 *) fw->data, fw->size, 0);
+	RTW_INFO("firmware downloaded to device %d\n", err);
+	release_firmware(fw);
 	if (err) {
 		err_ret = err;
 		goto out;
@@ -1804,30 +1818,6 @@ int rtw_halmac_dlfw(struct dvobj_priv *d, u8 *fw, u32 fwsize)
 
 out:
 	return err_ret;
-}
-
-int rtw_halmac_dlfw_from_file(struct dvobj_priv *d, u8 *fwpath)
-{
-	u8 *fw = NULL;
-	u32 fwmaxsize, size = 0;
-	int err = 0;
-
-
-	fwmaxsize = FIRMWARE_MAX_SIZE;
-	fw = rtw_zmalloc(fwmaxsize);
-	if (!fw)
-		return -1;
-
-	size = rtw_retrieve_from_file(fwpath, fw, fwmaxsize);
-	if (size)
-		err = rtw_halmac_dlfw(d, fw, size);
-	else
-		err = -1;
-
-	rtw_mfree(fw, fwmaxsize);
-	fw = NULL;
-
-	return err;
 }
 
 /*
