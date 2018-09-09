@@ -152,7 +152,7 @@ u8 rtl8821c_rx_tsf_addr_filter_config(_adapter *adapter, u8 config)
  *	_SUCCESS	Download Firmware OK.
  *	_FAIL		Download Firmware FAIL!
  */
-s32 rtl8821c_fw_dl(PADAPTER adapter, u8 wowlan)
+s32 rtl8821c_fw_dl(PADAPTER adapter)
 {
 	struct dvobj_priv *d = adapter_to_dvobj(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
@@ -160,16 +160,13 @@ s32 rtl8821c_fw_dl(PADAPTER adapter, u8 wowlan)
 	u8 fw_bin = _TRUE;
 
 	fw_bin = _FALSE;
-	if (_TRUE == wowlan)
-		err = rtw_halmac_dlfw(d, array_mp_8821c_fw_wowlan, array_length_mp_8821c_fw_wowlan);
-	else
-		err = rtw_halmac_dlfw(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic);
+	err = rtw_halmac_dlfw(d, array_mp_8821c_fw_nic, array_length_mp_8821c_fw_nic);
 
 	if (!err) {
 		adapter->bFWReady = _TRUE;
 		hal_data->fw_ractrl = _TRUE;
 		RTW_INFO("%s Download Firmware from %s success\n", __func__, (fw_bin) ? "file" : "array");
-		RTW_INFO("%s FW Version:%d SubVersion:%d\n", (wowlan) ? "WOW" : "NIC", hal_data->firmware_version, hal_data->firmware_sub_version);
+		RTW_INFO("%s FW Version:%d SubVersion:%d\n", "NIC", hal_data->firmware_version, hal_data->firmware_sub_version);
 
 		return _SUCCESS;
 	} else {

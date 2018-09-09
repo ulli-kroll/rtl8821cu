@@ -1495,7 +1495,7 @@ int hal_read_mac_hidden_rpt(_adapter *adapter)
 
 	/* download FW */
 	pHalData->not_xmitframe_fw_dl = 1;
-	ret_fwdl = rtw_hal_fw_dl(adapter, _FALSE);
+	ret_fwdl = rtw_hal_fw_dl(adapter);
 	pHalData->not_xmitframe_fw_dl = 0;
 	if (ret_fwdl != _SUCCESS)
 		goto mac_hidden_rpt_hdl;

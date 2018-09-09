@@ -55,7 +55,7 @@ u8 rtl8821c_rx_ba_ssn_appended(PADAPTER);
 u8 rtl8821c_rx_fcs_append_switch(PADAPTER, u8 enable);
 u8 rtl8821c_rx_fcs_appended(PADAPTER);
 u8 rtl8821c_rx_tsf_addr_filter_config(_adapter *adapter, u8 config);
-s32 rtl8821c_fw_dl(PADAPTER, u8 wowlan);
+s32 rtl8821c_fw_dl(PADAPTER);
 s32 rtl8821c_fw_mem_dl(PADAPTER adapter, enum fw_mem mem);
 
 /* rtl8821c_ops.c */

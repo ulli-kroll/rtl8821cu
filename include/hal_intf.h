@@ -414,7 +414,7 @@ struct hal_ops {
 	s32(*fill_h2c_cmd)(PADAPTER, u8 ElementID, u32 CmdLen, u8 *pCmdBuffer);
 	void (*fill_fake_txdesc)(PADAPTER, u8 *pDesc, u32 BufferLen,
 				 u8 IsPsPoll, u8 IsBTQosNull, u8 bDataFrame);
-	s32(*fw_dl)(_adapter *adapter, u8 wowlan);
+	s32(*fw_dl)(_adapter *adapter);
 #ifdef RTW_HALMAC
 	s32 (*fw_mem_dl)(_adapter *adapter, enum fw_mem mem);
 #endif
@@ -775,7 +775,7 @@ void rtw_hal_gpio_multi_func_reset(_adapter *padapter, u8 gpio_num);
 #endif
 
 void rtw_hal_fw_correct_bcn(_adapter *padapter);
-s32 rtw_hal_fw_dl(_adapter *padapter, u8 wowlan);
+s32 rtw_hal_fw_dl(_adapter *padapter);
 
 #if defined(CONFIG_WOWLAN) || defined(CONFIG_AP_WOWLAN)
 	void rtw_hal_clear_interrupt(_adapter *padapter);
