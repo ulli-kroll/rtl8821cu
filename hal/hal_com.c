@@ -8051,6 +8051,7 @@ void rtw_dump_cur_efuse(PADAPTER padapter)
 	else
 		RTW_INFO("HW EFUSE\n");
 
+#if 0
 #ifdef CONFIG_RTW_DEBUG
 	for (i = 0; i < mapsize; i++) {
 		if (i % 16 == 0)
@@ -8062,6 +8063,7 @@ void rtw_dump_cur_efuse(PADAPTER padapter)
 		);
 	}
 	_RTW_PRINT_SEL(RTW_DBGDUMP, "\n");
+#endif
 #endif
 }
 
