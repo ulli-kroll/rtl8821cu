@@ -1770,7 +1770,7 @@ int rtw_halmac_dlfw(struct dvobj_priv *d)
 	HALMAC_RET_STATUS status;
 	u32 ok = _TRUE;
 	int err, err_ret = -1;
-	char *fw_name =  "rtlwifi/rtl8822cufw.bin";
+	char *fw_name =  "rtlwifi/rtl8821cufw.bin";
 	const struct firmware *fw;
 
 	RTW_INFO("request firmware %s\n",fw_name);
