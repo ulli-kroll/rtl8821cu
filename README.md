@@ -1,7 +1,7 @@
 rtl8821cu for linux
 ===================
 
-rtl8821cu/rtl8822cu linux kernel driver Wireless Dual-Band USB Adapter
+rtl8821cu/rtl8822cu linux kernel for wireless abgn device
 
 Note:
 This is an USB2 only adapter,  
@@ -46,9 +46,10 @@ or
 <u>Bluetooth support</u>  
 some device may have bluetooth build in.  
 i.e. Comfast or EDUP devices may do this  
-you need some additional driver to do this.  
+you need some additional driver to use this.  
 
-Please use prefix : rtl8821cu in subjet line
-TIA  
+Please use prefix **rtl8821cu** if you want to mail me  
+But please please don't, I have enough to do.  
+TIA 
 
 Hans Ulli Kroll <ulli.kroll@googlemail.com>
