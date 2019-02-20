@@ -151,8 +151,6 @@ typedef struct _ADAPTER _adapter, ADAPTER, *PADAPTER;
 #include <ethernet.h>
 #include <circ_buf.h>
 
-#include <rtw_android.h>
-
 #include <rtw_btcoex_wifionly.h>
 #ifdef CONFIG_BT_COEXIST
 	#include <rtw_btcoex.h>
