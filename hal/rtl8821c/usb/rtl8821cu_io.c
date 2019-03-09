@@ -48,9 +48,6 @@ void rtl8821cu_set_intf_ops(struct _io_ops *pops)
 	pops->_read_port_cancel = &usb_read_port_cancel;
 	pops->_write_port_cancel = &usb_write_port_cancel;
 
-#ifdef CONFIG_USB_INTERRUPT_IN_PIPE
-	pops->_read_interrupt = &usb_read_interrupt;
-#endif
 
 
 }
