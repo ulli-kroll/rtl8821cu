@@ -26,12 +26,6 @@
 #include "../rtl8821c.h"		/* 8821c hal common define. rtl8821cu_init_default_value ...*/
 #include "rtl8821cu.h"			/* 8821cu functions */
 
-#ifdef CONFIG_SUPPORT_USB_INT
-static void rtl8821cu_interrupt_handler(PADAPTER padapter, u16 pkt_len, u8 *pbuf)
-{
-}
-#endif /* CONFIG_SUPPORT_USB_INT */
-
 void rtl8821cu_set_hw_type(struct dvobj_priv *pdvobj)
 {
 	pdvobj->HardwareType = HARDWARE_TYPE_RTL8821CU;
@@ -284,9 +278,6 @@ u8 rtl8821cu_set_hal_ops(PADAPTER padapter)
 	ops->interface_ps_func = rtl8821cu_ps_func;
 #ifdef CONFIG_XMIT_THREAD_MODE
 	ops->xmit_thread_handler = rtl8821cu_xmit_buf_handler;
-#endif
-#ifdef CONFIG_SUPPORT_USB_INT
-	ops->interrupt_handler = rtl8821cu_interrupt_handler;
 #endif
 	return _TRUE;
 

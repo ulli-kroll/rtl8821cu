@@ -93,11 +93,6 @@
 
 #define CONFIG_DFS
 
- /* #define CONFIG_SUPPORT_USB_INT */
- #ifdef CONFIG_SUPPORT_USB_INT
-/* #define CONFIG_USB_INTERRUPT_IN_PIPE*/
-#endif
-
 #define CONFIG_IPS
 #ifdef CONFIG_IPS
 /* #define CONFIG_IPS_LEVEL_2*/ /*enable this to set default IPS mode to IPS_LEVEL_2*/
@@ -114,10 +109,8 @@
 	#ifdef CONFIG_POWER_SAVING
 		#define CONFIG_XMIT_THREAD_MODE
 	#endif
-	#ifndef CONFIG_SUPPORT_USB_INT
 		#define LPS_RPWM_WAIT_MS 300
 		#define CONFIG_DETECT_CPWM_BY_POLLING
-	#endif /* !CONFIG_SUPPORT_USB_INT */
 	/* #define DBG_CHECK_FW_PS_STATE */
 #endif
 
