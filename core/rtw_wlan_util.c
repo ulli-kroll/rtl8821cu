@@ -1645,7 +1645,7 @@ int WMM_param_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs	pIE)
 	return _TRUE;
 
 #if 0
-	if (pregpriv->wifi_spec == 1) {
+	if (0 == 1) {
 		if (pmlmeinfo->WMM_enable == 1) {
 			/* todo: compare the parameter set count & decide wheher to update or not */
 			return _FAIL;
@@ -1764,7 +1764,7 @@ void WMMOnAssocRsp(_adapter *padapter)
 		inx[2] = 2;
 		inx[3] = 3;
 
-		if (pregpriv->wifi_spec == 1) {
+		if (0 == 1) {
 			u32	j, tmp, change_inx = _FALSE;
 
 			/* entry indx: 0->vo, 1->vi, 2->be, 3->bk. */
@@ -1974,7 +1974,7 @@ void HT_caps_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 		break;
 	case 2:
 		#ifdef CONFIG_DISABLE_MCS13TO15
-		if (pmlmeext->cur_bwmode == CHANNEL_WIDTH_40 && pregistrypriv->wifi_spec != 1)
+		if (pmlmeext->cur_bwmode == CHANNEL_WIDTH_40 && 0 != 1)
 			set_mcs_rate_by_mask(pmlmeinfo->HT_caps.u.HT_cap_element.MCS_rate, MCS_RATE_2R_13TO15_OFF);
 		else
 		#endif

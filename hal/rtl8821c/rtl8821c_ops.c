@@ -969,7 +969,7 @@ static void hw_var_set_opmode(PADAPTER Adapter, u8 *val)
 			rtl8821c_rcr_clear(Adapter, RCR_CBSSID_DATA);/* Clear CBSSID_DATA */
 
 			/* for 11n Logo 4.2.31/4.2.32, disable BSSID BCN check for AP mode */
-			if (Adapter->registrypriv.wifi_spec)
+			if (0)
 				rtl8821c_rcr_clear(Adapter, RCR_CBSSID_BCN);
 
 			/* enable to rx data frame */
@@ -1412,7 +1412,7 @@ static void hw_var_set_mlme_sitesurvey(PADAPTER adapter, u8 enable)
 			rtw_write16(adapter, REG_RXFLTMAP_8821C, 0xFFFF);
 
 		/* for 11n Logo 4.2.31/4.2.32, disable BSSID BCN check for AP mode */
-		if (adapter->registrypriv.wifi_spec && MLME_IS_AP(adapter))
+		if (0 && MLME_IS_AP(adapter))
 			rcr_bit &= ~(BIT_CBSSID_BCN_8821C);
 
 		rtl8821c_rcr_add(adapter, rcr_bit);

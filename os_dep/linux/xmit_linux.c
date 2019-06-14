@@ -197,7 +197,7 @@ static inline bool rtw_os_need_wake_queue(_adapter *padapter, u16 qidx)
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35))
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 
-	if (padapter->registrypriv.wifi_spec) {
+	if (0) {
 		if (pxmitpriv->hwxmits[qidx].accnt < WMM_XMIT_THRESHOLD)
 			return _TRUE;
 	} else {
@@ -227,7 +227,7 @@ static inline bool rtw_os_need_stop_queue(_adapter *padapter, u16 qidx)
 {
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35))
-	if (padapter->registrypriv.wifi_spec) {
+	if (0) {
 		/* No free space for Tx, tx_worker is too slow */
 		if (pxmitpriv->hwxmits[qidx].accnt > WMM_XMIT_THRESHOLD)
 			return _TRUE;
@@ -478,7 +478,7 @@ int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
 			|| is_broadcast_mac_addr(pkt->data)
 			#endif
 			)
-		&& (padapter->registrypriv.wifi_spec == 0)
+		&& (0 == 0)
 	) {
 		if (pxmitpriv->free_xmitframe_cnt > (NR_XMITFRAME / 4)) {
 			res = rtw_mlcst2unicst(padapter, pkt);
