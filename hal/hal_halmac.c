@@ -1175,9 +1175,6 @@ static HALMAC_TRX_MODE _choose_trx_mode(struct dvobj_priv *d)
 
 	p = dvobj_get_primary_adapter(d);
 
-	if (0)
-		return HALMAC_TRX_MODE_WMM;
-
 	return HALMAC_TRX_MODE_NORMAL;
 }
 
