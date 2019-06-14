@@ -36,14 +36,6 @@
 #include <rtl8821ce_hal.h>
 #endif
 
-#ifdef CONFIG_SUPPORT_TRX_SHARED
-#define FIFO_BLOCK_SIZE		32768 /*@Block size = 32K*/
-#define RX_FIFO_EXPANDING	(1 * FIFO_BLOCK_SIZE)
-#else
-#define RX_FIFO_EXPANDING	0
-#endif
-
-
 #if defined(CONFIG_USB_HCI)
 
 	#ifndef MAX_RECVBUF_SZ
