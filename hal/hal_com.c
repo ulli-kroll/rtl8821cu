@@ -8111,6 +8111,8 @@ u32 Hal_ReadMACAddrFromFile(PADAPTER padapter, u8 *mac_addr)
 
 int hal_config_macaddr(_adapter *adapter, bool autoload_fail)
 {
+	struct dvobj_priv *pdvobjpriv = adapter_to_dvobj(adapter);
+	struct usb_device *udev = pdvobjpriv->pusbdev;
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	u8 addr[ETH_ALEN];
 	int addr_offset = hal_efuse_macaddr_offset(adapter);
@@ -8153,8 +8155,8 @@ bypass_hw_pg:
 
 	_rtw_memset(hal_data->EEPROMMACAddr, 0, ETH_ALEN);
 	ret = _FAIL;
-
 exit:
+	dev_info(&udev->dev, "rtl8821cu %pM hw_info[%02x]", hw_addr, addr_offset);
 	return ret;
 }
 
