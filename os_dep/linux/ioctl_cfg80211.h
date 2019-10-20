@@ -348,6 +348,4 @@ bool rtw_cfg80211_pwr_mgmt(_adapter *adapter);
 #define NUM_NL80211_BANDS IEEE80211_NUM_BANDS
 #endif
 
-#include "rtw_cfgvendor.h"
-
 #endif /* __IOCTL_CFG80211_H__ */
