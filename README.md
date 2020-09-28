@@ -1,7 +1,7 @@
 rtl8821cu for linux
 ===================
 
-rtl8821cu/rtl8822cu linux kernel for wireless abgn device
+rtl8821cu/rtl8822cu linux kernel module for wireless abgn devices
 
 Note:
 This is an USB2 only adapter,  
@@ -15,15 +15,15 @@ build/load/function tested with v4.18.7
 Building and install driver
 ---------------------------
 
-for building type  
+To build tthe driver type  
 `make`  
 
-for load the driver  
+To load the driver in the kernel type  
 `sudo modprobe cfg80211`  
 `sudo insmod rtl8821cu.ko`  
 
 
-You need to install the needed fw with  
+You need to install the needed firmware with  
 `sudo make installfw`  
 
 If you need to crosscompile use  
@@ -38,13 +38,13 @@ including cdrom emulation for windows
 knowing USB id's doing this trick (after cold boot)  
   *  0x0bda 0x1a2b
 
-you can do a scsi cdrom ejcet with  
+you can do a scsi cdrom eject with  
 `usb_modeswitch -v 0bda -p 1a2b -K`  
 or  
 `eject $DEVICE`
 
 <u>Bluetooth support</u>  
-some device may have bluetooth build in.  
+some devices may have bluetooth built-in.  
 i.e. Comfast or EDUP devices may do this  
 you need some additional driver to use this.  
 
